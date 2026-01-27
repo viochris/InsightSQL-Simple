@@ -108,8 +108,15 @@ An advanced version is currently in development! It will upgrade to a **ReAct (R
 *The core experience in action. The agent translates natural language into SQL, executes it, and provides data-driven insights with a transparent reasoning process.*
 
 ### 3. Deep Analytical Reasoning
-![Complex Question Example](assets/complex_question_example.png)  
-*Going beyond simple queries. This example demonstrates the agent's ability to perform comparative analysis and provide qualitative explanations based on the retrieved data.*
+*Going beyond simple queries. This section demonstrates the agent's ability to perform comparative analysis and provide qualitative explanations based on the retrieved data, supporting both English and Indonesian contexts.*
+
+**🇬🇧 English Context**
+![Complex Analysis (English)](assets/complex_question_example_en.png)
+*The agent compares "Casual" vs "Sexy" styles, calculating metrics and providing a logical conclusion on which is more successful based on the data.*
+
+**🇮🇩 Indonesian Context**
+![Complex Analysis (Indonesian)](assets/complex_question_example_id.png)
+*Demonstrates the agent's robust multilingual capabilities. It accurately processes complex Indonesian prompts to deliver consistent, data-backed conclusions.*
 
 ---
 **Author:** [Silvio Christian, Joe](https://www.linkedin.com/in/silvio-christian-joe)
