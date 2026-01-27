@@ -58,6 +58,8 @@ with st.sidebar:
         help="Paste your Google Gemini API Key here. This is required to power the AI agent." # Filled help text
     )
 
+    st.divider()
+
     # Button to clear the chat history (Soft Reset)
     # This invokes 'reset_state' to clear messages without breaking the database connection
     st.button(
