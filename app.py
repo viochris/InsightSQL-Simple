@@ -79,6 +79,40 @@ with st.sidebar:
         help="Initializes the connection to the 'dresses.db' file and builds the AI agent." # Filled help text
     )
 
+    st.divider()
+
+    # --- Help & Documentation ---
+    # Expandable section for the User Guide
+    with st.expander("📖 How to Use"):
+        st.markdown(
+            """
+            1. **Enter API Key:** Paste your Google Gemini API Key in the field above.
+            2. **Connect:** Click **'Connect to Database'** to initialize the AI Agent.
+            3. **Ask:** Type questions about the data (e.g., *"How many items are rated 5 stars?"*).
+            4. **Reset:** Use **'Reset Conversation'** to clear the chat interface. 
+               *(Note: This agent is **One-Shot** and has **No Memory**; it treats every question as a brand new request).*
+            """
+        )
+
+    # Expandable section for Frequently Asked Questions
+    with st.expander("❓ FAQ"):
+        st.markdown(
+            """
+            **Q: What data is this?**
+            A: This app uses a sample SQLite database (`dresses.db`) containing fashion sales data.
+
+            **Q: Can I use my own database?**
+            A: Yes! You can replace `dresses.db` with your own SQLite file. 
+            For instructions, visit: [InsightSQL-Simple on GitHub](https://github.com/viochris/InsightSQL-Simple).
+            
+            **Q: Is my data safe?**
+            A: Yes. The AI processes the *schema* (table structure) to generate SQL. It only retrieves data rows when explicitly asked.
+            
+            **Q: Why 'Quota Exceeded'?**
+            A: The Google Gemini Free Tier has rate limits. If this happens, wait a minute and try again.
+            """
+        )
+
 # Check if the API Key has been provided by the user
 if st.session_state.google_api_key:
     # Implement a Singleton pattern: Only initialize the LLM if it hasn't been created yet.
@@ -138,6 +172,10 @@ if connect and st.session_state.llm is not None:
 # Handle the case where the user clicks 'Connect' without providing an API Key first
 elif connect and st.session_state.llm is None:
     st.toast("⚠️ API Key Missing! Please check the sidebar.", icon="🔑")
+
+# Check if the Database Toolkit is missing (meaning the user hasn't connected yet)
+if st.session_state.toolkit is None:
+    st.warning("⚠️ Database not connected. Please click **'Connect to Database'** in the sidebar.", icon="🔌")
 
 # Check if the Agent Executor needs to be initialized
 # We only create it if:
@@ -240,6 +278,10 @@ if prompt_text := st.chat_input("Ask a question about your data..."):
                 if "429" in error_str or "resource" in error_str:
                     # Specific handling for Google API Quota limits (Resource Exhausted)
                     st.error("⏳ API Quota Exceeded. Please wait a moment or check your Google Cloud plan.", icon="🛑")
+
+                elif "api_key" in error_str or "400" in error_str:
+                    # Specific handling for Invalid API Key errors (Authentication failed)
+                    st.error("🔑 Invalid API Key. Please check your Google API Key in the sidebar.", icon="🚫")
 
                 elif "parsing" in error_str:
                     # Handling for when the LLM output cannot be parsed by the Agent
