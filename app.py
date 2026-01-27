@@ -1,7 +1,6 @@
 import streamlit as st
 # Import LangChain community tools specifically for constructing the SQL Agent
 from langchain_community.agent_toolkits.sql.base import create_sql_agent
-from langchain import hub
 # Import utilities for establishing database connections and managing schemas
 from langchain_community.utilities import SQLDatabase
 from langchain_community.agent_toolkits import SQLDatabaseToolkit
