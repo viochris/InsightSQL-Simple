@@ -47,6 +47,8 @@ with st.sidebar:
     # Sidebar header with an emoji for better visual hierarchy
     st.header("⚙️ Page Configuration")
 
+    st.divider()
+
     # Input widget for the API Key
     # 'type="password"' masks the input characters for security
     # 'on_change' triggers the cleanup function immediately if the key is modified
