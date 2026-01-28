@@ -46,12 +46,13 @@ This version utilizes the standard `create_sql_agent`. While powerful for straig
 * Extremely complex `JOIN` operations across multiple tables without context.
 * Ambiguous column names if the schema is not descriptive.
 
-### 2. Coming Soon: Advanced ReAct Agent 🚀
-An advanced version is currently in development! It will upgrade to a **ReAct (Reasoning + Acting) Agent** architecture to provide:
-* Better multi-step reasoning.
-* Memory persistence across complex analysis.
-* Higher accuracy on vague user queries.
-*(Stay tuned for the update!)*
+### 2. Upgrade: Advanced ReAct Agent 🚀
+The advanced **ReAct (Reasoning + Acting) Agent** version is now available!  
+👉 **Check out the repository here:** [InsightSQL-ReAct-Engine](https://github.com/viochris/InsightSQL-ReAct-Engine.git)  
+This upgraded architecture provides significant improvements:
+* **Better multi-step reasoning:** Capable of breaking down complex questions into logical steps.
+* **Memory persistence across complex analysis:** Remembers context perfectly during long conversations.
+* **Higher accuracy on vague user queries:** Uses logic to infer intent better than standard zero-shot agents.
 
 ### 3. Database Format
 * Currently optimized for **SQLite (`.db`)** files only.
