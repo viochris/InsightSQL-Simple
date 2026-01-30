@@ -113,6 +113,19 @@ with st.sidebar:
             """
         )
 
+    st.markdown("---")
+    st.markdown(
+        """
+        <div style="text-align: center; font-size: 0.85rem; color: #888;">
+            © 2026 <b>Silvio Christian, Joe</b><br>
+            Powered by <b>Google Gemini</b> 🚀<br><br>
+            <a href="https://www.linkedin.com/in/silvio-christian-joe/" target="_blank" style="text-decoration: none; margin-right: 10px;">🔗 LinkedIn</a>
+            <a href="mailto:viochristian12@gmail.com" style="text-decoration: none;">📧 Email</a>
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
+
 # Check if the API Key has been provided by the user
 if st.session_state.google_api_key:
     # Implement a Singleton pattern: Only initialize the LLM if it hasn't been created yet.
